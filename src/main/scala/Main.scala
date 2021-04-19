@@ -1,8 +1,10 @@
 object Main {
   def main(args: Array[String]): Unit = {
-    val expression = scala.io.StdIn.readLine()
+    val expression: String = scala.io.StdIn.readLine()
 
-    println(expression)
+    new LexemesParser()
+      .parse(expression)
+      .ToReversedPolishNotationOrder()
   }
 }
 
