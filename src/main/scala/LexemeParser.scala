@@ -1,8 +1,8 @@
 import scala.util.matching.Regex
 
 class LexemeParser() {
-  private val openBracketPattern: Regex = "^[(]$".r
-  private val closeBracketPattern: Regex = "^[)]$".r
+  private val openBracketPattern: Regex = "\\(".r
+  private val closeBracketPattern: Regex = "\\)".r
   private val operatorPattern: Regex = "^[+\\-*/]$".r
   private val numberPattern: Regex = "^[+\\-]?\\d$".r
 
@@ -11,15 +11,15 @@ class LexemeParser() {
    * @param lexemeAsString входная строка.
    * @return Лексема.
    */
-  def parse(lexemeAsString: String): Option[Lexeme] = {
+  def Parse(lexemeAsString: String): Option[Lexeme] = {
     if (isOpenBracket(lexemeAsString)) {
-      Some(new OpenBracketLexeme(lexemeAsString))
+      Some(OpenBracketLexeme(lexemeAsString))
     } else if (isCloseBracket(lexemeAsString)) {
-      Some(new CloseBracketLexeme(lexemeAsString))
+      Some(CloseBracketLexeme(lexemeAsString))
     } else if (isOperator(lexemeAsString)) {
-      Some(new OperatorLexeme(lexemeAsString))
+      Some(OperatorLexeme(lexemeAsString))
     } else if (isNumber(lexemeAsString)) {
-      Some(new NumericLexeme(lexemeAsString))
+      Some(NumericLexeme(lexemeAsString))
     } else {
       None
     }

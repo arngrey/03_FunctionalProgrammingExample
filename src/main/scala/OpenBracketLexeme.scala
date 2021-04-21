@@ -1,1 +1,1 @@
-class OpenBracketLexeme (private val inputLexeme: String) extends BracketLexeme(inputLexeme) {}
+case class OpenBracketLexeme (private val inputLexeme: String) extends BracketLexeme(inputLexeme) {}

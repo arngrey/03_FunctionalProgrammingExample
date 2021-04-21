@@ -1,4 +1,4 @@
-class ReversedPolishNotationAlgorithmState[T]() {
+sealed class ShuntingYardAlgorithmState[T]() {
   private val stack = new Stack[T]()
   private var list = List[T]()
 
@@ -6,9 +6,9 @@ class ReversedPolishNotationAlgorithmState[T]() {
   def popStack(): T = stack.pop()
 
   def pushList(item: T): Unit = {
-    list = item :: list
+    list = list :+ item
   }
-  def getList: List[T] = list.clone[List[T]]
+  def getList: List[T] = list
 
   def pushAllFromStackToList(): Unit = {
     while (!stack.isEmpty) {

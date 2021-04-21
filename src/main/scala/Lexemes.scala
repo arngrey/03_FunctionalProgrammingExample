@@ -1,26 +1,11 @@
-case class Lexemes(private val list: List[Lexeme]) {
-  def ToReversedPolishNotationOrder(): Lexemes = {
-    val state = new ReversedPolishNotationAlgorithmState[Lexeme]()
+class Lexemes(private val lexemesAsList: List[Lexeme]) {
+  def ToReversedPolishNotationOrder(): Lexemes = new Lexemes(
+    new ShuntingYardAlgorithm()
+      .toReversedPolishNotationOrder(lexemesAsList)
+  )
 
-    list
-      .foreach {
-        case lexeme@(_: NumericLexeme) =>
-          state.pushList(lexeme)
-        case lexeme@(_: OpenBracketLexeme) =>
-          state.pushStack(lexeme)
-        case _: OperatorLexeme =>
-          state.pushFromStackToListWhile(lexeme => lexeme.isInstanceOf[OperatorLexeme]/*TODO priority*/)
-        case _: CloseBracketLexeme =>
-          state.pushFromStackToListWhile(lexeme => lexeme.isInstanceOf[OpenBracketLexeme])
-          state.popStack()
-        case _ =>
-      }
-
-    state.pushAllFromStackToList()
-
-    Lexemes(state.getList)
-  }
-
-
-
+  def GetAsString(): String =
+    lexemesAsList
+      .map(lexeme => lexeme.GetAsString())
+      .mkString(" ")
 }
