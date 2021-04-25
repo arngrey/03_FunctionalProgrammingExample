@@ -4,6 +4,8 @@ class Lexemes(private val lexemesAsList: List[Lexeme]) {
       .toReversedPolishNotationOrder(lexemesAsList)
   )
 
+  def GetAsList(): List[Lexeme] = lexemesAsList
+
   def GetAsString(): String =
     lexemesAsList
       .map(lexeme => lexeme.GetAsString())
