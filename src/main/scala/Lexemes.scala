@@ -10,4 +10,8 @@ class Lexemes(private val lexemesAsList: List[Lexeme]) {
     lexemesAsList
       .map(lexeme => lexeme.GetAsString())
       .mkString(" ")
+
+  def Evaluate(): Double =
+    new ReversedPolishNotationEvaluationAlgorithm()
+      .Evaluate(this.ToReversedPolishNotationOrder())
 }

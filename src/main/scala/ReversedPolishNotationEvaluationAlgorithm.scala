@@ -1,6 +1,8 @@
+import scala.collection.mutable
+
 sealed class ReversedPolishNotationEvaluationAlgorithm {
   def Evaluate(lexemesInReversedPolishNotationOrder: Lexemes): Double = {
-    val stack = new Stack[Double]()
+    val stack = new mutable.Stack[Double]()
 
     lexemesInReversedPolishNotationOrder
       .GetAsList()

@@ -1,5 +1,7 @@
+import scala.collection.mutable
+
 sealed class ShuntingYardAlgorithmState[T]() {
-  private val stack = new Stack[T]()
+  private val stack = new mutable.Stack[T]()
   private var list = List[T]()
 
   def pushStack(item: T): Unit = stack.push(item)
@@ -10,15 +12,13 @@ sealed class ShuntingYardAlgorithmState[T]() {
   }
   def getList: List[T] = list
 
-  def pushAllFromStackToList(): Unit = {
-    while (!stack.isEmpty) {
-      pushList(stack.pop())
-    }
-  }
+  def pushAllFromStackToList(): Unit =
+    stack
+      .popWhile(_ => true)
+      .foreach(item => pushList(item))
 
-  def pushFromStackToListWhile(condition: T => Boolean): Unit = {
-    while (!stack.isEmpty && condition(stack.top())) {
-      pushList(stack.pop())
-    }
-  }
+  def pushFromStackToListWhile(condition: T => Boolean): Unit =
+    stack
+      .popWhile(condition)
+      .foreach(item => pushList(item))
 }

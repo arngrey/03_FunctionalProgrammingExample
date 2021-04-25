@@ -6,11 +6,6 @@ class LexemeParser() {
   private val operatorPattern: Regex = "^[+\\-*/]$".r
   private val numberPattern: Regex = "^[+\\-]?\\d$".r
 
-  /**
-   * Преобразует входную строку в лексему.
-   * @param lexemeAsString входная строка.
-   * @return Лексема.
-   */
   def Parse(lexemeAsString: String): Option[Lexeme] = {
     if (isOpenBracket(lexemeAsString)) {
       Some(OpenBracketLexeme(lexemeAsString))
