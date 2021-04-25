@@ -20,7 +20,7 @@ sealed class ReversedPolishNotationEvaluationAlgorithm {
         case lexeme@(_: OperatorLexeme) =>
           val rightOperand = stack.pop()
           val leftOperand = stack.pop()
-          lexeme.evaluate(leftOperand, rightOperand)
+          lexeme.Evaluate(leftOperand, rightOperand)
             match {
               case Some(value) => stack.push(value)
               case None =>

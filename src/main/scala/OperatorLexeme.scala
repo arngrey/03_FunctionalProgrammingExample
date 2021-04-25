@@ -2,19 +2,19 @@ case class OperatorLexeme (private val inputLexeme: String) extends Lexeme(input
   /**
    * @return является ли оператор высокоприоритетным?
    */
-  def isHighPriority: Boolean = inputLexeme == "*" || inputLexeme == "/"
+  def IsHighPriority: Boolean = inputLexeme == "*" || inputLexeme == "/"
 
   /**
    * @return является ли оператор низкоприоритетным?
    */
-  def isLowPriority: Boolean = inputLexeme == "+" || inputLexeme == "-"
+  def IsLowPriority: Boolean = inputLexeme == "+" || inputLexeme == "-"
 
   /**
    * @param other другой оператор.
    * @return является ли приоритет оператора выше либо равным приоритету другого оператора?
    */
   def HasGraterOrEqualPriorityThan(other: OperatorLexeme): Boolean =
-    !(this.isLowPriority && other.isHighPriority)
+    !(this.IsLowPriority && other.IsHighPriority)
 
   /**
    * Применить оператор к операндам и получить результат.
@@ -22,7 +22,7 @@ case class OperatorLexeme (private val inputLexeme: String) extends Lexeme(input
    * @param rightOperand правый операнд.
    * @return результат операции.
    */
-  def evaluate(leftOperand: Double, rightOperand: Double): Option[Double] =
+  def Evaluate(leftOperand: Double, rightOperand: Double): Option[Double] =
     inputLexeme match {
       case "+" => Some(leftOperand + rightOperand)
       case "-" => Some(leftOperand - rightOperand)

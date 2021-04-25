@@ -4,7 +4,7 @@ class LexemeParser() {
   private val openBracketPattern: Regex = "\\(".r
   private val closeBracketPattern: Regex = "\\)".r
   private val operatorPattern: Regex = "^[+\\-*/]$".r
-  private val numberPattern: Regex = "^[+\\-]?\\d$".r
+  private val numericPattern: Regex = "^[+\\-]?\\d$".r
 
   /**
    * Преобразовать лексему в строковом представлении в лексему-объект.
@@ -18,7 +18,7 @@ class LexemeParser() {
       Some(CloseBracketLexeme(lexemeAsString))
     } else if (isOperator(lexemeAsString)) {
       Some(OperatorLexeme(lexemeAsString))
-    } else if (isNumber(lexemeAsString)) {
+    } else if (isNumeric(lexemeAsString)) {
       Some(NumericLexeme(lexemeAsString))
     } else {
       None
@@ -34,6 +34,6 @@ class LexemeParser() {
   private[this] def isOperator(lexemeAsString: String): Boolean =
     operatorPattern.matches(lexemeAsString)
 
-  private[this] def isNumber(lexemeAsString: String): Boolean =
-    numberPattern.matches(lexemeAsString)
+  private[this] def isNumeric(lexemeAsString: String): Boolean =
+    numericPattern.matches(lexemeAsString)
 }
