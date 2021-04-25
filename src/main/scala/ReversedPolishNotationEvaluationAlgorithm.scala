@@ -1,6 +1,14 @@
 import scala.collection.mutable
 
+/**
+ * Алгоритм вычисления выражения в обратной польской записи.
+ */
 sealed class ReversedPolishNotationEvaluationAlgorithm {
+  /**
+   * Вычислить выражение в обратной польской записи.
+   * @param lexemesInReversedPolishNotationOrder список лексем в порядке обратной польской записи.
+   * @return Результат вычисления.
+   */
   def Evaluate(lexemesInReversedPolishNotationOrder: Lexemes): Double = {
     val stack = new mutable.Stack[Double]()
 

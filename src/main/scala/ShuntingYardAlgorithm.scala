@@ -1,4 +1,12 @@
+/**
+ * Алгоритм Сортировочной станции Э. Дейкстры.
+ */
 sealed class ShuntingYardAlgorithm {
+  /**
+   * Отсортировать список лексем выражения в соответствии с порядком обратной польской записи.
+   * @param lexemesInInfixNotationOrder список лексем в порядке инфиксной записи.
+   * @return Список лексем в порядке обратной польской записи.
+   */
   def toReversedPolishNotationOrder(lexemesInInfixNotationOrder: List[Lexeme]): List[Lexeme] = {
     val state = new ShuntingYardAlgorithmState[Lexeme]()
 
@@ -21,6 +29,6 @@ sealed class ShuntingYardAlgorithm {
       }
 
     state.pushAllFromStackToList()
-    state.getList
+    state.getResult
   }
 }
