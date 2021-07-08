@@ -1,4 +1,4 @@
-# 03_FunctionalProgrammingExample
+# FunctionalProgrammingExample
 
 This is example of functional programming paradigm.
 
